@@ -22,6 +22,7 @@ module SimpleCalendar
     def render(&block)
       view_context.render(
         partial: partial_name,
+        header: header,
         locals: {
           block: block,
           calendar: self,
@@ -61,6 +62,10 @@ module SimpleCalendar
 
       def partial_name
         @options[:partial] || self.class.name.underscore
+      end
+
+      def header
+        @options[:header] || true
       end
 
       def attribute
